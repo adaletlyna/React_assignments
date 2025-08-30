@@ -4,6 +4,7 @@ import Header from './components/Header.jsx'
 import BooksList from './views/BooksList.jsx'
 import BookDetails from './views/BookDetails.jsx'
 import AddBook from './views/AddBook.jsx'
+import UpdateBook from './views/UpdateBook.jsx'
 
 import './App.css'
 
@@ -20,7 +21,7 @@ function App() {
           <Route path="/books" element={<BooksList />} />
           <Route path="/books/new" element={<AddBook />} />
           <Route path="/books/:id" element={<BookDetails />} />
-          
+          <Route path="/books/:id/edit" element={<UpdateBook />} /> 
           
         </Routes>
       </div>

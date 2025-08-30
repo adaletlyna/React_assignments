@@ -1,12 +1,18 @@
 import Book from "../models/book.model.js";
 
+
+
 // CREATE a new book
 async function createBook(req, res) {
   try {
     const newBook = await Book.create(req.body);
     res.status(201).json(newBook);
   } catch (error) {
-    console.log(error);
+    console.log("Validation Error:", error);
+    
+    if (error.name === "ValidationError") {
+      return res.status(400).json({ errors: error.errors });
+    }
     res.status(400).json(error);
   }
 }
@@ -40,7 +46,10 @@ async function updateBook(req, res) {
     const updatedBook = await Book.findByIdAndUpdate(req.params.id, req.body, options);
     res.json(updatedBook);
   } catch (error) {
-    console.log(error);
+    console.log("Validation Error:", error);
+    if (error.name === "ValidationError") {
+      return res.status(400).json({ errors: error.errors });
+    }
     res.status(400).json(error);
   }
 }

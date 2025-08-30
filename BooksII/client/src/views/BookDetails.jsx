@@ -29,7 +29,10 @@ function BookDetails() {
         <div className="row"><span className="label">Pages:</span> <span>{book.pageCount}</span></div>
         <div className="row"><span className="label">Available:</span> <span>{book.available ? 'Yes' : 'No'}</span></div>
       </div>
-      <button className="danger" onClick={handleBorrow}>Borrow</button>
+      <div className="actions">
+        <button onClick={() => navigate(`/books/${id}/edit`)}>Edit</button>
+        <button className="danger" onClick={handleBorrow}>Borrow</button>
+  </div>
     </section>
   )
 }export default BookDetails
